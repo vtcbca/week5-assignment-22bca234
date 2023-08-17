@@ -1,0 +1,35 @@
+WEEK-5 ASSIGNMENT
+--------------------------------------------------------------------------------------------------------
+Write a python program create csv file student.csv(sid,sname,city,contact) using 10 records 
+
+(in which 5 records input directly and 5 records take input from user) write records into this file.
+
+Read this file using csv module and print it. 
+
+NOTE: Reading and writting must be perform using python script.
+------------------------------------------------------------------------------------------------------------
+import csv
+input_list=[[101,'OM','Bardoli',9012365432],
+           [102,'Sai','Surat',9012345678],
+           [103,'Ram','Vadodara',8200123455],
+          [104,'Radha','Navsari',9925778989],
+           [105,'Krishna','Jamnagar',9099226754]]
+------------------------------------------------------------------------------------------------------------
+
+for i in range(5):
+    sid=int(input('Enter Student ID : '))
+    sname=input('Enter Student Name : ')
+    city=input('Enter Student City : ')
+    contact=int(input('Enter Student Contact : '))
+    input_list.append((sid,sname,city,contact))
+------------------------------------------------------------------------------------------------------------
+with open('student.csv','w',newline='') as csvfile:
+    write_obj=csv.writer(csvfile)
+    header=['S_ID','S_NAME','S_CITY','S_CONTACT_NO']
+    write_obj.writerow(header)
+    write_obj.writerows(input_list)
+------------------------------------------------------------------------------------------------------------
+with open('student.csv','r',) as csvfile:
+    read_obj=csv.reader(csvfile)
+    for row in read_obj:
+        print(row)
